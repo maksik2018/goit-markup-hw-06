@@ -1,5 +1,7 @@
 :root {
   --primary-blue: rgba(33, 150, 243, 1);
+  --primary-blue-active: rgba(24, 140, 232, 1);
+
   --bg-black: rgba(47, 48, 58, 1);
   --bg-sect-white: rgba(245, 244, 250, 1);
 
@@ -8,6 +10,7 @@
   --main-text-grey: rgba(117, 117, 117, 1);
   --ftr-text-grey-op60: rgba(255, 255, 255, 0.6);
   --social-icons: #afb1b8;
+  --timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 ul {
@@ -69,7 +72,13 @@ ul {
   border-radius: 4px;
   border: 1px solid var(--primary-blue);
   outline: none;
+  transition: box-shadow 250ms var(--timing-function);
+}
+
+.btn:hover,
+.btn:focus {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
 }
 
 /* advantages */
@@ -419,6 +428,15 @@ img {
   fill: var(--primary-blue);
 }
 
+.form-modal-input:hover {
+  border-color: var(--primary-blue);
+  outline: none;
+}
+
+.form-modal-input:hover + .form-modal-icon {
+  fill: var(--primary-blue);
+}
+
 .form-modal-wrap {
   position: relative;
 }
@@ -470,6 +488,15 @@ img {
   border: 1px solid var(--primary-blue);
   outline: none;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  transition: background-color 250ms var(--timing-function),
+    box-shadow 250ms var(--timing-function);
+}
+
+.checkbox-btn:hover,
+.checkbox-btn:focus {
+  background-color: var(--primary-blue-active);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
 }
 
 .form-checkbox {
@@ -484,21 +511,44 @@ img {
   /* position: absolute;
   top: 50%;
   left: 0; */
-  border: 1px solid var(--hdr-text-black);
+  border: 2px solid var(--hdr-text-black);
   background: var(--primary-white);
   margin-left: 12px;
   margin-right: 8px;
   border-radius: 2px;
   display: inline-block;
   align-items: center;
+  cursor: pointer;
 }
+
+/* спрятать чекбокс для разных браузеров, кроме интренет эксплорер */
+
+/* .checkbox {
+  position: absolute;
+  appearance: none;
+} */
+
+/* спрятать чекбокс для разных браузеров */
 
 .checkbox {
   position: absolute;
-  appearance: none;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+.checkbox-link {
+  color: var(--primary-blue);
+  text-decoration: underline;
 }
 
 .checkbox:checked + .checkbox-icon {
   background-color: var(--primary-blue);
   border-color: transparent;
+}
+
+.checkbox:focus + .checkbox-icon {
+  border: 2px solid var(--primary-blue);
 }
